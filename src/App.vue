@@ -25,6 +25,7 @@ export default{
       })
       .then(result => {
         store.resultMovieArray = result.data.results;
+        console.log(store.resultMovieArray)
       })
     }
   },
