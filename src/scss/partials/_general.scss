@@ -1,0 +1,6 @@
+@use "./vars" as *;
+
+body{
+  background-color: lighten($primary-color, 10%) !important;
+  min-height: 100vh;
+}
