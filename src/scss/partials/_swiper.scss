@@ -1,0 +1,20 @@
+
+
+.swiper-slide {
+  font-size: 18px;
+  background: transparent;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  object-fit: cover;
+}
+
+.swiper-pagination-bullet-active{
+  background-color: #DB202C;
+}

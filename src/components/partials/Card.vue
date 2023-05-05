@@ -16,8 +16,7 @@ export default {
 </script>
 
 <template>
-  <div class="col mb-5">
-    <div class="pg-card d-flex flex-column position-relative">
+    <div class="pg-card d-flex flex-column position-relative mb-5">
 
       <!-- Container immagine -->
       <div class="pg-img-container rounded-3 overflow-hidden">
@@ -45,12 +44,13 @@ export default {
           <span class="me-2">Voti:</span>
 
           <!-- Full Star -->
-          <span
-            v-if="rating > 0"
-            v-for="star in (rating - 1)"
-            :key="star">
-            <i class="fa-solid fa-star" style="color: #f5c211;"></i>
-          </span>
+          <div v-if="rating > 0">
+            <span
+              v-for="star in (rating - 1)"
+              :key="star">
+              <i class="fa-solid fa-star" style="color: #f5c211;"></i>
+            </span>
+          </div>
 
           <!-- Half Star with class condition -->
           <span v-if="rating > 0">
@@ -70,11 +70,9 @@ export default {
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <style lang="scss" scoped>
-  .col{
     .pg-card{
       color: white;
       overflow: hidden;
@@ -101,6 +99,7 @@ export default {
         .pg-img-container{
           img{
             opacity: 40%;
+            transform: scale(1.1);
           }
         }
         .pg-card-text{
@@ -108,5 +107,4 @@ export default {
         }
       }
     }
-  }
 </style>
