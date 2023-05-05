@@ -26,7 +26,8 @@ export default {
           :originalTitle="movie.original_title"
           :translatedTitle="movie.title"
           :language="movie.original_language"
-          :rating="Math.ceil(movie.vote_average/2)" />
+          :rating="Math.ceil(movie.vote_average/2)"
+          :originalRating="(movie.vote_average/2)"/>
       </div>
       <h1 class="text-white" v-if="store.resultSeriesArray.length > 0">Serie TV</h1>
       <div class="row row-cols-5">
@@ -37,7 +38,8 @@ export default {
           :originalTitle="serie.original_name"
           :translatedTitle="serie.name"
           :language="serie.original_language"
-          :rating="Math.ceil(serie.vote_average/2)" />
+          :rating="Math.ceil(serie.vote_average/2)"
+          :originalRating="(serie.vote_average/2)"/>
       </div>
     </div>
   </main>
