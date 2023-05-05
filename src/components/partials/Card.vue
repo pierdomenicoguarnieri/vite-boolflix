@@ -7,6 +7,9 @@ export default {
     translatedTitle: String,
     language: String,
     rating: Number
+  },
+  methods:{
+
   }
 }
 </script>
@@ -21,7 +24,11 @@ export default {
         <span>Lingua:</span>
         <img :src="`img/flags/language-${language}.svg`" class="ms-2" :alt="language" :title="language">
       </div>
-      <span>Media voti: {{rating}}/10</span>
+      <div class="pg-votes-container d-flex align-items-center">
+        <span class="me-2">Media voti:</span>
+        <span v-for="star in rating" :key="star"><i class="fa-solid fa-star" style="color: #f5c211;"></i></span>
+        <span v-for="starEmpty in (5-rating)" :key="starEmpty"><i class="fa-regular fa-star"></i></span>
+      </div>
     </div>
   </div>
 </template>
