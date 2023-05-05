@@ -6,6 +6,7 @@ export default {
     originalTitle: String,
     translatedTitle: String,
     language: String,
+    overview: String,
     rating: Number,
     originalRating: Number
   },
@@ -28,9 +29,9 @@ export default {
       <div class="pg-card-text w-100 h-100 position-absolute p-2">
 
         <!-- Contenitore dei titoli -->
-        <div class="ps titles-container">
-          <h3><span class="text-uppercase">{{language}}:</span> {{originalTitle}}</h3>
-          <h4>IT: {{translatedTitle}}</h4>
+        <div class="pg-titles-container">
+          <h4><span class="text-uppercase">{{language}}:</span> {{originalTitle}}</h4>
+          <h5>IT: {{translatedTitle}}</h5>
         </div>
 
         <!-- Contenitore della lingua -->
@@ -67,6 +68,13 @@ export default {
             <i class="fa-regular fa-star"></i>
           </span>
           <span class="ms-1">({{originalRating.toFixed(2)}})</span>
+          
+        </div>
+        
+        <!-- Overview Container -->
+        <div class="pg-overview-container h-50 overflow-scroll mt-2 mb-5">
+          <span>Overview:</span>
+          <p>{{overview}}</p>
         </div>
       </div>
     </div>
@@ -89,10 +97,10 @@ export default {
       .pg-card-text{
         top: 100%;
         transition: all .5s;
-      }
-      .pg-language-conteiner{
-        img{
-          width: 30px;
+        .pg-language-conteiner{
+          img{
+            width: 30px;
+          }
         }
       }
       &:hover{

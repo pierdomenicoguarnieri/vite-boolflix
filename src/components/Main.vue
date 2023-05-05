@@ -46,6 +46,7 @@
             :originalTitle="movie.original_title"
             :translatedTitle="movie.title"
             :language="movie.original_language"
+            :overview="movie.overview"
             :rating="Math.ceil(movie.vote_average/2)"
             :originalRating="(movie.vote_average/2)"/>
           </swiper-slide>
@@ -65,6 +66,7 @@
             :originalTitle="movie.original_title"
             :translatedTitle="movie.title"
             :language="movie.original_language"
+            :overview="movie.overview"
             :rating="Math.ceil(movie.vote_average/2)"
             :originalRating="(movie.vote_average/2)"/>
           </swiper-slide>
@@ -83,6 +85,7 @@
             :originalTitle="movie.original_title"
             :translatedTitle="movie.title"
             :language="movie.original_language"
+            :overview="movie.overview"
             :rating="Math.ceil(movie.vote_average/2)"
             :originalRating="(movie.vote_average/2)"/>
           </swiper-slide>
@@ -101,6 +104,7 @@
             :originalTitle="serie.original_name"
             :translatedTitle="serie.name"
             :language="serie.original_language"
+            :overview="serie.overview"
             :rating="Math.ceil(serie.vote_average/2)"
             :originalRating="(serie.vote_average/2)"/>
           </swiper-slide>
