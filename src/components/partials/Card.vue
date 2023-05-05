@@ -17,7 +17,8 @@ export default {
 <template>
   <div class="col mb-5">
     <div class="pg-card d-flex flex-column">
-      <img :src="`https://image.tmdb.org/t/p/w342${image}`" :alt="originalTitle" :title="originalTitle">
+      <img v-if="image != null" :src="`https://image.tmdb.org/t/p/w342${image}`" :alt="originalTitle" :title="originalTitle">
+      <img v-else src="img/no-image.jpg" :alt="originalTitle" :title="originalTitle">
       <h1>Titolo originale: {{originalTitle}}</h1>
       <h2>Titolo italiano: {{translatedTitle}}</h2>
       <div class="pg-language-conteiner d-flex">
