@@ -24,6 +24,7 @@ export default{
         }
       })
       .then(result => {
+        store.resultMoviesArray = [];
         store.resultMoviesArray = result.data.results;
         console.log(store.resultMoviesArray)
       })
@@ -35,6 +36,7 @@ export default{
         }
       })
       .then(result => {
+        store.resultSeriesArray = [];
         store.resultSeriesArray = result.data.results;
         console.log(store.resultSeriesArray)
       })

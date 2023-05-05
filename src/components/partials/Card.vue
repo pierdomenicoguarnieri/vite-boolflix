@@ -18,22 +18,54 @@ export default {
 <template>
   <div class="col mb-5">
     <div class="pg-card d-flex flex-column position-relative">
-      <div class="pg-img-container">
+
+      <!-- Container immagine -->
+      <div class="pg-img-container rounded-3 overflow-hidden">
         <img v-if="image != null" :src="`https://image.tmdb.org/t/p/w342${image}`" :alt="originalTitle" :title="originalTitle">
         <img v-else src="img/no-image.jpg" :alt="originalTitle" :title="originalTitle">
       </div>
+
+      <!-- Contenitore del testo -->
       <div class="pg-card-text w-100 h-100 position-absolute p-2">
-        <h3><span class="text-uppercase">{{language}}:</span> {{originalTitle}}</h3>
-        <h4>IT: {{translatedTitle}}</h4>
+
+        <!-- Contenitore dei titoli -->
+        <div class="ps titles-container">
+          <h3><span class="text-uppercase">{{language}}:</span> {{originalTitle}}</h3>
+          <h4>IT: {{translatedTitle}}</h4>
+        </div>
+
+        <!-- Contenitore della lingua -->
         <div class="pg-language-conteiner d-flex">
           <span>Lingua:</span>
           <img :src="`img/flags/language-${language}.svg`" class="ms-2" :alt="language" :title="language">
         </div>
+
+        <!-- Contenitore dei voti -->
         <div class="pg-votes-container d-flex align-items-center">
-          <span class="me-2">Media voti:</span>
-          <span v-for="star in (rating - 1)" :key="star"><i class="fa-solid fa-star" style="color: #f5c211;"></i></span>
-          <span><i class="fa-solid" :class="{'fa-star-half-stroke' : originalRating !== rating, 'fa-star': originalRating === rating}" style="color: #f5c211;"></i></span>
-          <span v-for="starEmpty in (5-rating)" :key="starEmpty"><i class="fa-regular fa-star"></i></span>
+          <span class="me-2">Voti:</span>
+
+          <!-- Full Star -->
+          <span
+            v-if="rating > 0"
+            v-for="star in (rating - 1)"
+            :key="star">
+            <i class="fa-solid fa-star" style="color: #f5c211;"></i>
+          </span>
+
+          <!-- Half Star with class condition -->
+          <span v-if="rating > 0">
+            <i
+              class="fa-solid"
+              :class="{'fa-star-half-stroke' : originalRating !== rating, 'fa-star': originalRating === rating}"
+              style="color: #f5c211;"></i>
+          </span>
+
+          <!-- Empy Star -->
+          <span
+            v-for="starEmpty in (5-rating)"
+            :key="starEmpty">
+            <i class="fa-regular fa-star"></i>
+          </span>
           <span class="ms-1">({{originalRating.toFixed(2)}})</span>
         </div>
       </div>
