@@ -17,8 +17,10 @@ export default {
 <template>
   <div class="col mb-5">
     <div class="pg-card d-flex flex-column">
-      <img v-if="image != null" :src="`https://image.tmdb.org/t/p/w342${image}`" :alt="originalTitle" :title="originalTitle">
-      <img v-else src="img/no-image.jpg" :alt="originalTitle" :title="originalTitle">
+      <div class="pg-img-container">
+        <img v-if="image != null" :src="`https://image.tmdb.org/t/p/w342${image}`" :alt="originalTitle" :title="originalTitle">
+        <img v-else src="img/no-image.jpg" :alt="originalTitle" :title="originalTitle">
+      </div>
       <h1>Titolo originale: {{originalTitle}}</h1>
       <h2>Titolo italiano: {{translatedTitle}}</h2>
       <div class="pg-language-conteiner d-flex">
@@ -38,8 +40,14 @@ export default {
   .col{
     .pg-card{
       color: white;
-      img{
+      .pg-img-container{
         width: 100%;
+        aspect-ratio: 2/3;
+        object-fit: contain;
+        img{
+        width: 100%;
+        height: 100%;
+        }
       }
       .pg-language-conteiner{
         img{
