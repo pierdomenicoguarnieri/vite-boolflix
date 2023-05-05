@@ -17,7 +17,10 @@ export default {
       <img :src="`https://image.tmdb.org/t/p/w342${image}`" :alt="originalTitle" :title="originalTitle">
       <h1>Titolo originale: {{originalTitle}}</h1>
       <h2>Titolo italiano: {{translatedTitle}}</h2>
-      <span>Lingua: language</span>
+      <div class="pg-language-conteiner d-flex">
+        <span>Lingua:</span>
+        <img :src="`img/flags/language-${language}.svg`" class="ms-2" :alt="language" :title="language">
+      </div>
       <span>Media voti: {{rating}}/10</span>
     </div>
   </div>
@@ -29,6 +32,11 @@ export default {
       color: white;
       img{
         width: 100%;
+      }
+      .pg-language-conteiner{
+        img{
+          width: 30px;
+        }
       }
     }
   }
