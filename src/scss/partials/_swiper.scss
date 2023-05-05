@@ -11,8 +11,8 @@
 }
 
 .swiper-slide img {
-  display: block;
-  object-fit: cover;
+  display: inline-block;
+  object-fit: none;
 }
 
 .swiper-pagination-bullet-active{

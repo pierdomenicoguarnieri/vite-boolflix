@@ -40,11 +40,29 @@ export default{
         store.resultSeriesArray = result.data.results;
         console.log(store.resultSeriesArray)
       })
+    },
+    getApiPopular(){
+      axios.get(store.apiUrlPopular)
+      .then(result => {
+        store.resultPopularArray = [];
+        store.resultPopularArray = result.data.results;
+        console.log("Pop",store.resultPopularArray);
+      })
+    },
+    getApiTopRated(){
+      axios.get(store.apiUrlTopRated)
+      .then(result => {
+        store.resultTopRated = [];
+        store.resultTopRated = result.data.results;
+        console.log("Pop",store.resultTopRated);
+      })
     }
   },
   mounted(){
     this.getApi();
     this.getApiSeries();
+    this.getApiPopular();
+    this.getApiTopRated();
   }
 }
 </script>

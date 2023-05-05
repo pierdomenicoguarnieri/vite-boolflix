@@ -79,11 +79,11 @@ export default {
       .pg-img-container{
         width: 100%;
         aspect-ratio: 2/3;
-        object-fit: contain;
         img{
         width: 100%;
         height: 100%;
         transition: all .5s;
+        object-fit: cover !important;
         }
       }
       .pg-card-text{
