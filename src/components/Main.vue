@@ -17,15 +17,27 @@ export default {
 <template>
   <main>
     <div class="container py-5">
+      <h1 class="text-white" v-if="store.resultMoviesArray.length > 0">Movies</h1>
       <div class="row row-cols-5">
         <Card
-          v-for="movie in store.resultMovieArray"
+          v-for="movie in store.resultMoviesArray"
           :key="movie.id"
           :image="movie.poster_path"
           :originalTitle="movie.original_title"
           :translatedTitle="movie.title"
           :language="movie.original_language"
           :rating="movie.vote_average" />
+      </div>
+      <h1 class="text-white" v-if="store.resultSeriesArray.length > 0">Serie TV</h1>
+      <div class="row row-cols-5">
+        <Card
+          v-for="serie in store.resultSeriesArray"
+          :key="serie.id"
+          :image="serie.poster_path"
+          :originalTitle="serie.original_name"
+          :translatedTitle="serie.name"
+          :language="serie.original_language"
+          :rating="serie.vote_average" />
       </div>
     </div>
   </main>
