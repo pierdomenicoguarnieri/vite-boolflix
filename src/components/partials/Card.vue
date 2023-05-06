@@ -20,6 +20,7 @@ export default {
     getHeight(id){
       const textContainer = document.getElementById(id);
       this.textHeight = textContainer.offsetHeight;
+      console.log(this.textHeight)
     } 
   }
 }
@@ -109,19 +110,34 @@ export default {
       .pg-card-text{
         top: 100%;
         transition: all .5s;
-        .pg-upper-text-container{
-          max-height: 200px;
-        }
         .pg-titles-container{
           .pg-original-title{
             font-weight: 600;
             font-size: 1.15rem;
             display: block;
+            max-height: 30px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow : ellipsis;
+            transition: all .5s;
+            &:hover{
+              max-height: 200px;
+              white-space: normal;
+            }
           }
           .pg-translated-title{
             font-weight: 500;
             font-size: 1.1rem;
             display: block;
+            max-height: 30px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow : ellipsis;
+            transition: all .5s;
+            &:hover{
+              max-height: 200px;
+              white-space: normal;
+            }
           }
         }
         .pg-language-container{
