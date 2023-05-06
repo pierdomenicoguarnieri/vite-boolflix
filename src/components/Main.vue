@@ -32,7 +32,13 @@
   <main>
     <div class="container py-5">
 
-      <h1 class="text-white" v-if="store.resultMoviesArray.length === 0">Popular Movies</h1>
+      <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultMoviesArray.length === 0">
+        <h1 class="text-white me-2">Popular Movies</h1>
+        <div class="pg-btn-container">
+          <button type="button" class="btn btn-danger me-2">Previous Page</button>  
+          <button type="button" class="btn btn-danger">Next Page</button>  
+        </div>
+      </div>
       <swiper
         v-if="store.resultMoviesArray.length === 0"
         :slidesPerView="5"
@@ -53,7 +59,13 @@
           </swiper-slide>
       </swiper>
 
-      <h1 class="text-white" v-if="store.resultMoviesArray.length === 0">Top Rated</h1>
+      <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultMoviesArray.length === 0">
+        <h1 class="text-white me-2">Top Rated</h1>
+        <div class="pg-btn-container">
+          <button type="button" class="btn btn-danger me-2">Previous Page</button>  
+          <button type="button" class="btn btn-danger">Next Page</button>  
+        </div>
+      </div>
       <swiper
         v-if="store.resultMoviesArray.length === 0"
         :slidesPerView="5"
@@ -74,7 +86,13 @@
           </swiper-slide>
       </swiper>
 
-      <h1 class="text-white" v-if="store.resultMoviesArray.length > 0">Movies</h1>
+      <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultMoviesArray.length > 0">
+        <h1 class="text-white me-2">Searched Movies</h1>
+        <div class="pg-btn-container">
+          <button type="button" class="btn btn-danger me-2">Previous Page</button>  
+          <button type="button" class="btn btn-danger">Next Page</button>  
+        </div>
+      </div>
       <swiper
         :slidesPerView="5"
         :spaceBetween="30"
@@ -94,7 +112,13 @@
           </swiper-slide>
       </swiper>
 
-      <h1 class="text-white" v-if="store.resultSeriesArray.length > 0">Serie TV</h1>
+      <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultSeriesArray.length > 0">
+        <h1 class="text-white me-2">Searched TV Series</h1>
+        <div class="pg-btn-container">
+          <button type="button" class="btn btn-danger me-2">Previous Page</button>  
+          <button type="button" class="btn btn-danger">Next Page</button>  
+        </div>
+      </div>
       <swiper
         :slidesPerView="5"
         :spaceBetween="30"
