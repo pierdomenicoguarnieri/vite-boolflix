@@ -1,7 +1,7 @@
 <script>
 import {store} from "../data/store.js";
 export default {
-  name: "Footer",
+  name: "Header",
   data(){
     return{
       store

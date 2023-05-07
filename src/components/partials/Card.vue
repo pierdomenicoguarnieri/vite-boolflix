@@ -95,7 +95,7 @@ export default {
       </div>
       <!-- Overview Container -->
       <div class="pg-overview-container overflow-auto mt-2 mb-5" :style="{maxHeight: `calc(100% - ${this.textHeight}px)`}" v-if="overview !== ''">
-        <span>Overview:</span>
+        <span>Descrizione:</span>
         <p class="pe-3">{{overview}}</p>
       </div>
     </div>
