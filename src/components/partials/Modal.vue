@@ -53,6 +53,19 @@ export default {
             <li class="px-2 py-1 rounded-3 bg-danger me-2" v-for="genre in genres" :key="genre.id">{{ genre.name }}</li>
           </ul>
         </div>
+
+        <div class="pg-modal-cast">
+          <h4>Cast:</h4>
+          <div class="row row-cols-5">
+            <div class="col mb-4 text-center" v-for="(actor, index) in cast" :key="actor.id" v-show="index <= numberOfCast - 1">
+              <div class="pg-cast-image mb-2">
+                <img :src="`https://image.tmdb.org/t/p/original${actor.profile_path}`" :alt="actor.name" :title="actor.name" v-show="actor.profile_path != null">
+                <img src="img/actor.png" :alt="actor.name" :title="actor.name" v-show="actor.profile_path == null">
+              </div>
+              <h5>{{actor.name}}</h5>
+              <h6>Nel ruolo di: "{{actor.character}}"</h6>
+            </div>
+          </div>
       </div>
     </div>
   </div>
