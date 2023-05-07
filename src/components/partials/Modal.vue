@@ -29,6 +29,8 @@ export default {
 
 <template>
   <div class="pg-modal-wrapper d-flex align-items-center justify-content-center overflow-scroll" v-if="store.showModal" @click="store.showModal = !store.showModal">
+    <Loading v-if="store.isLoading"/>
+    <div class="pg-modal overflow-hidden rounded-2 bg-dark text-white mb-2" v-else @click.stop="store.showModal = true">
       </div>
     </div>
   </div>
