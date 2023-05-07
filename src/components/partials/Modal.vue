@@ -46,6 +46,9 @@ export default {
   width: 100%;
   height: calc(100vh - 80px);
   .pg-modal{
+    position: sticky;
+    top: 0;
+    margin-top: 80px;
     width: 60%;
   }
 }
