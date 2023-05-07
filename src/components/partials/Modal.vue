@@ -28,10 +28,7 @@ export default {
 </script>
 
 <template>
-  <div class="pg-modal-wrapper d-flex justify-content-center align-items-center" v-if="store.showModal" @click="store.showModal = !store.showModal">
-    <div class="pg-modal overflow-scroll rounded-2 p-3 bg-dark text-white">
-      <div class="pg-modal-header">
-        <h1>Film Infos</h1>
+  <div class="pg-modal-wrapper d-flex align-items-center justify-content-center overflow-scroll" v-if="store.showModal" @click="store.showModal = !store.showModal">
       </div>
     </div>
   </div>
@@ -42,10 +39,10 @@ export default {
   position: fixed;
   z-index: 1000;
   background-color: rgba(0, 0, 0, 0.4);
-  top: 0;
+  top: 80px;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 80px);
   .pg-modal{
     width: 60%;
   }
