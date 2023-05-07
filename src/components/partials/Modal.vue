@@ -66,6 +66,11 @@ export default {
               <h6>Nel ruolo di: "{{actor.character}}"</h6>
             </div>
           </div>
+          <div class="btn-container w-100 text-center" v-show="cast.length > 5">
+            <button type="button" class="btn btn-danger" @click="numberOfCast = cast.length, flag = false" v-if="flag">Mostra tutto</button>
+            <button type="button" class="btn btn-danger" @click="numberOfCast = 5, flag = true" v-else>Nascondi</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -96,6 +101,19 @@ export default {
       img{
         z-index: 1;
         width: 100%;
+      }
+    }
+    .pg-modal-body{
+      .pg-cast-image{
+        width: 100%;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        overflow: hidden;
+        img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
       }
     }
   }
