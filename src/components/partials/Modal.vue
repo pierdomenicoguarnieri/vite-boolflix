@@ -45,6 +45,8 @@ export default {
         </div>
         <img class="position-absolute top-0 left-0" :src="`https://image.tmdb.org/t/p/original${image}`" :alt="title">
       </div>
+
+      <div class="pg-modal-body p-3">
       </div>
     </div>
   </div>
