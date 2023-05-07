@@ -1,10 +1,28 @@
 <script>
   import {store} from "../../data/store.js";
+  import Loading from "./Loading.vue";
 export default {
+  name:"Modal",
+  components:{
+    Loading
+  },
   data(){
     return{
-      store
+      store,
+      numberOfCast: 5,
+      flag: true
     }
+  },
+  props:{
+    title: String,
+    translatedTitle: String,
+    titleSerie: String,
+    translatedTitleSerie: String,
+    releaseDate: String,
+    image: String,
+    genres: Array,
+    rate: Number,
+    cast: Array,
   }
 }
 </script>
