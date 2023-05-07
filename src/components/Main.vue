@@ -152,7 +152,14 @@
       </swiper>
     </div>
 
-    <Modal/>
+  <Modal
+    :title="store.resultDetails.original_title"
+    :translatedTitle="store.resultDetails.title"
+    :titleSerie="store.resultDetails.original_name"
+    :translatedTitleSerie="store.resultDetails.name"
+    :image="store.resultDetails.backdrop_path"
+    :genres="store.resultDetails.genres"
+    :cast="store.resultCredits.cast"/>
   </main>
 </template>
 
