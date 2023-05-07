@@ -29,7 +29,7 @@ export default {
 
 <template>
   <!-- Modal Wrapper, chiude il modal se ci premi sopra -->
-  <div class="pg-modal-wrapper d-flex align-items-center justify-content-center overflow-scroll" v-if="store.showModal" @click="store.showModal = !store.showModal">
+  <div class="pg-modal-wrapper d-flex align-items-center justify-content-center overflow-scroll" v-if="store.showModal" @click="store.showModal = !store.showModal, flag = true, numberOfCast = 5">
 
     <!-- Loading -->
     <Loading v-if="store.isLoading"/>
@@ -53,7 +53,7 @@ export default {
 
           <!-- Bottone di chiusura -->
           <div class="btn-container">
-            <button type="button" class="btn btn-dark rounded-circle" @click.stop="store.showModal = !store.showModal"><i class="fa-solid fa-x"></i></button>
+            <button type="button" class="btn btn-dark rounded-circle" @click.stop="store.showModal = !store.showModal, flag = true, numberOfCast = 5"><i class="fa-solid fa-x"></i></button>
           </div>
         </div>
 
