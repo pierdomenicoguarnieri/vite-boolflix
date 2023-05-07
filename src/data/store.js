@@ -14,5 +14,6 @@ export const store = reactive({
   movieTitleToSearch: "",
   showModal: false,
   idInfos: 0,
-  type: ""
+  type: "",
+  isLoading: true
 })
