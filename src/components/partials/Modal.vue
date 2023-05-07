@@ -47,6 +47,12 @@ export default {
       </div>
 
       <div class="pg-modal-body p-3">
+        <div class="pg-modal-genres">
+          <h4>Generi:</h4>
+          <ul class="list-unstyled d-flex">
+            <li class="px-2 py-1 rounded-3 bg-danger me-2" v-for="genre in genres" :key="genre.id">{{ genre.name }}</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
