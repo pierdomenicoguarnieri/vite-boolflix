@@ -56,6 +56,21 @@ export default{
         store.resultTopRated = result.data.results;
         console.log("Pop",store.resultTopRated);
       })
+    },
+    getApiInfos(){
+      axios.get(`https://api.themoviedb.org/3/${store.type}/${store.idInfos}?api_key=61bccd436e95e107643dd33da21f2885&language=it-IT`)
+      .then(result => {
+        store.resultDetails = result.data;
+        this.getApiCredits()
+        console.log(store.resultDetails);
+      })
+    },
+    getApiCredits(){
+      axios.get(`https://api.themoviedb.org/3/${store.type}/${store.idInfos}/credits?api_key=61bccd436e95e107643dd33da21f2885&language=it-IT`)
+      .then(result => {
+        store.resultCredits = result.data;
+        console.log(store.resultCredits);
+      })
     }
   },
   mounted(){
@@ -69,7 +84,7 @@ export default{
 
 <template>
   <Header @searchMovie="getApi" @searchSeries="getApiSeries"/>
-  <Main/>
+  <Main @getApiDetails="getApiInfos"/>
   <Footer/>
 </template>
 

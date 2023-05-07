@@ -5,15 +5,15 @@
   import 'swiper/css/pagination';
   import {store} from "../data/store.js";
   import Card from "./partials/Card.vue";
-
-  import 'swiper/css';
+  import Modal from "./partials/Modal.vue";
 
   export default {
     name: "Main",
     components: {
       Swiper,
       SwiperSlide,
-      Card
+      Card,
+      Modal
     },
     data(){
       return{
@@ -25,12 +25,17 @@
         modules: [Pagination],
       };
     },
+    methods:{
+      getInfos(){
+        this.$emit("getApiDetails");
+      }
+    }
   }
 </script>
 
 <template>
   <main>
-    <div class="container py-5">
+    <div class="container py-3">
 
       <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultMoviesArray.length === 0">
         <h1 class="text-white me-2">Popular Movies</h1>
@@ -55,7 +60,9 @@
             :overview="movie.overview"
             :rating="Math.ceil(movie.vote_average/2)"
             :originalRating="(movie.vote_average/2)"
-            :id="movie.id"/>
+            :id="movie.id"
+            :isMovie="true"
+            @getApiInfos="getInfos"/>
           </swiper-slide>
       </swiper>
 
@@ -82,7 +89,9 @@
             :overview="movie.overview"
             :rating="Math.ceil(movie.vote_average/2)"
             :originalRating="(movie.vote_average/2)"
-            :id="movie.id"/>
+            :id="movie.id"
+            :isMovie="true"
+            @getApiInfos="getInfos"/>
           </swiper-slide>
       </swiper>
 
@@ -108,7 +117,9 @@
             :overview="movie.overview"
             :rating="Math.ceil(movie.vote_average/2)"
             :originalRating="(movie.vote_average/2)"
-            :id="movie.id"/>
+            :id="movie.id"
+            :isMovie="true"
+            @getApiInfos="getInfos"/>
           </swiper-slide>
       </swiper>
 
@@ -134,13 +145,21 @@
             :overview="serie.overview"
             :rating="Math.ceil(serie.vote_average/2)"
             :originalRating="(serie.vote_average/2)"
-            :id="serie.id"/>
+            :id="serie.id"
+            :isMovie="false"
+            @getApiInfos="getInfos"/>
           </swiper-slide>
       </swiper>
     </div>
+
+    <Modal/>
   </main>
 </template>
 
 <style lang="scss" scoped>
   @import "swiper/swiper.css";
+  main{
+    padding-top: 80px;
+    overflow: scroll;
+  }
 </style>

@@ -8,7 +8,11 @@ export const store = reactive({
   resultMoviesArray: [],
   resultSeriesArray: [],
   resultPopularArray: [],
+  resultDetails: [],
+  resultCredits: [],
   resultTopRated: [],
   movieTitleToSearch: "",
-  // apiToCall: "",
+  showModal: false,
+  idInfos: 0,
+  type: ""
 })
