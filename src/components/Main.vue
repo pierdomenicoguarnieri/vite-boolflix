@@ -44,6 +44,8 @@
           <button type="button" class="btn btn-danger">Next Page</button>  
         </div>
       </div>
+
+      <!-- Swiper per i film più popolari -->
       <swiper
         v-if="store.resultMoviesArray.length === 0"
         :slidesPerView="5"
@@ -66,6 +68,7 @@
           </swiper-slide>
       </swiper>
 
+
       <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultMoviesArray.length === 0">
         <h1 class="text-white me-2">Top Rated</h1>
         <div class="pg-btn-container">
@@ -73,6 +76,8 @@
           <button type="button" class="btn btn-danger">Next Page</button>  
         </div>
       </div>
+      
+      <!-- Swiper per i film più votati -->
       <swiper
         v-if="store.resultMoviesArray.length === 0"
         :slidesPerView="5"
@@ -81,6 +86,7 @@
         :modules="modules"
         class="mySwiper">
         <swiper-slide v-for="movie in store.resultTopRated" :key="movie.id">
+
           <Card
             :image="movie.poster_path"
             :originalTitle="movie.original_title"
@@ -94,6 +100,7 @@
             @getApiInfos="getInfos"/>
           </swiper-slide>
       </swiper>
+
 
       <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultMoviesArray.length > 0">
         <h1 class="text-white me-2">Searched Movies</h1>
@@ -102,6 +109,8 @@
           <button type="button" class="btn btn-danger">Next Page</button>  
         </div>
       </div>
+
+      <!-- Swiper per i film cercati -->
       <swiper
         :slidesPerView="5"
         :spaceBetween="30"
@@ -109,6 +118,7 @@
         :modules="modules"
         class="mySwiper">
         <swiper-slide v-for="movie in store.resultMoviesArray" :key="movie.id">
+
           <Card
             :image="movie.poster_path"
             :originalTitle="movie.original_title"
@@ -123,6 +133,7 @@
           </swiper-slide>
       </swiper>
 
+
       <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultSeriesArray.length > 0">
         <h1 class="text-white me-2">Searched TV Series</h1>
         <div class="pg-btn-container">
@@ -130,6 +141,8 @@
           <button type="button" class="btn btn-danger">Next Page</button>  
         </div>
       </div>
+      
+      <!-- Swiper per le Serie TV -->
       <swiper
         :slidesPerView="5"
         :spaceBetween="30"
@@ -137,6 +150,7 @@
         :modules="modules"
         class="mySwiper">
         <swiper-slide v-for="serie in store.resultSeriesArray" :key="serie.id">
+
           <Card
             :image="serie.poster_path"
             :originalTitle="serie.original_name"
@@ -152,15 +166,16 @@
       </swiper>
     </div>
 
-  <Modal
-    :title="store.resultDetails.original_title"
-    :translatedTitle="store.resultDetails.title"
-    :titleSerie="store.resultDetails.original_name"
-    :translatedTitleSerie="store.resultDetails.name"
-    :image="store.resultDetails.backdrop_path"
-    :genres="store.resultDetails.genres"
-    :cast="store.resultCredits.cast"/>
-  </main>
+    <!-- Modale -->
+    <Modal
+      :title="store.resultDetails.original_title"
+      :translatedTitle="store.resultDetails.title"
+      :titleSerie="store.resultDetails.original_name"
+      :translatedTitleSerie="store.resultDetails.name"
+      :image="store.resultDetails.backdrop_path"
+      :genres="store.resultDetails.genres"
+      :cast="store.resultCredits.cast"/>
+    </main>
 </template>
 
 <style lang="scss" scoped>

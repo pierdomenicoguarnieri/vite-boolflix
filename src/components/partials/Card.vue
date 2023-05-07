@@ -93,6 +93,7 @@ export default {
           <button type="button" class="btn btn-danger" @click="store.showModal = !store.showModal, callApiInfos(id, isMovie)">Info</button>
         </div>
       </div>
+      
       <!-- Overview Container -->
       <div class="pg-overview-container overflow-auto mt-2 mb-5" :style="{maxHeight: `calc(100% - ${this.textHeight}px)`}" v-if="overview !== ''">
         <span>Descrizione:</span>

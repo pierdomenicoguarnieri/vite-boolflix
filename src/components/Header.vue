@@ -11,9 +11,14 @@ export default {
 </script>
 
 <template>
+  <!-- Header -->
   <header class="position-fixed w-100">
+
+    <!-- Container -->
     <div class="container-fluid px-5 d-flex w-100 h-100 justify-content-between align-items-center">
       <img class="h-75" src="img/logo-boolflix.png" alt="">
+
+      <!-- Container Input -->
       <div class="pg-input-container d-flex">
         <input
           v-model="store.movieTitleToSearch"

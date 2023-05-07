@@ -28,25 +28,43 @@ export default {
 </script>
 
 <template>
+  <!-- Modal Wrapper, chiude il modal se ci premi sopra -->
   <div class="pg-modal-wrapper d-flex align-items-center justify-content-center overflow-scroll" v-if="store.showModal" @click="store.showModal = !store.showModal">
+
+    <!-- Loading -->
     <Loading v-if="store.isLoading"/>
+
+    <!-- Modal, interrompe il click precedente, se si preme sul modale non si chiuderà -->
     <div class="pg-modal overflow-hidden rounded-2 bg-dark text-white mb-2" v-else @click.stop="store.showModal = true">
+
+      <!-- Modal header -->
       <div class="pg-modal-header position-relative">
+
+        <!-- Container infos -->
         <div class="pg-modal-header-infos d-flex justify-content-between w-100 h-100 position-absolute p-3 top-0 left-0">
+
+          <!-- Titles container -->
           <div class="pg-title-container d-flex flex-column">
             <h1 v-show="title != null">{{title}}</h1>
             <h1 v-show="titleSerie!= null">{{titleSerie}}</h1>
             <h2 v-show="translatedTitle != null">{{translatedTitle}}</h2>
             <h2 v-show="translatedTitleSerie != null">{{translatedTitleSerie}}</h2>
           </div>
+
+          <!-- Bottone di chiusura -->
           <div class="btn-container">
             <button type="button" class="btn btn-dark rounded-circle" @click.stop="store.showModal = !store.showModal"><i class="fa-solid fa-x"></i></button>
           </div>
         </div>
+
+        <!-- Immagine di sfondo dinamica -->
         <img class="position-absolute top-0 left-0" :src="`https://image.tmdb.org/t/p/original${image}`" :alt="title">
       </div>
 
+      <!-- Modal Body -->
       <div class="pg-modal-body p-3">
+
+        <!-- Container dei generi -->
         <div class="pg-modal-genres">
           <h4>Generi:</h4>
           <ul class="list-unstyled d-flex">
@@ -54,18 +72,28 @@ export default {
           </ul>
         </div>
 
+        <!-- Container del cast -->
         <div class="pg-modal-cast">
           <h4>Cast:</h4>
+
           <div class="row row-cols-5">
+
             <div class="col mb-4 text-center" v-for="(actor, index) in cast" :key="actor.id" v-show="index <= numberOfCast - 1">
+            
+              <!-- Container immagine -->
               <div class="pg-cast-image mb-2">
                 <img :src="`https://image.tmdb.org/t/p/original${actor.profile_path}`" :alt="actor.name" :title="actor.name" v-show="actor.profile_path != null">
+
+                <!-- Questa immagine viene mostrata se la stringa è nulla -->
                 <img src="img/actor.png" :alt="actor.name" :title="actor.name" v-show="actor.profile_path == null">
               </div>
+
               <h5>{{actor.name}}</h5>
               <h6>Nel ruolo di: "{{actor.character}}"</h6>
             </div>
           </div>
+
+          <!-- Container del bottone per mostrare l'intero cast, esso viene mostrato solo se i componenti del cast sono più di 5  -->
           <div class="btn-container w-100 text-center" v-show="cast.length > 5">
             <button type="button" class="btn btn-danger" @click="numberOfCast = cast.length, flag = false" v-if="flag">Mostra tutto</button>
             <button type="button" class="btn btn-danger" @click="numberOfCast = 5, flag = true" v-else>Nascondi</button>
