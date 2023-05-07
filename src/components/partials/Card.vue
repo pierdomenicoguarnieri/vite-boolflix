@@ -90,7 +90,7 @@ export default {
         </div>
 
         <div class="pg-modal-container">
-          <button type="button" class="btn btn-danger" @click="store.showModal = !store.showModal, callApiInfos(id, isMovie)">Film Infos</button>
+          <button type="button" class="btn btn-danger" @click="store.showModal = !store.showModal, callApiInfos(id, isMovie)">Info</button>
         </div>
       </div>
       <!-- Overview Container -->
