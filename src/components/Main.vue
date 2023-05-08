@@ -37,7 +37,7 @@
   <main>
     <div class="container py-3">
 
-      <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultMoviesArray.length === 0">
+      <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultMoviesArray.length === 0 && store.resultSeriesArray.length  === 0">
         <h1 class="text-white me-2">Popular Movies</h1>
         <div class="pg-btn-container">
           <button type="button" class="btn btn-danger me-2">Previous Page</button>  
@@ -47,10 +47,32 @@
 
       <!-- Swiper per i film più popolari -->
       <swiper
-        v-if="store.resultMoviesArray.length === 0"
+        v-if="store.resultMoviesArray.length === 0 && store.resultSeriesArray.length  === 0"
         :slidesPerView="5"
         :spaceBetween="30"
         :pagination="{ clickable: true,}"
+        :breakpoints="{
+            '0': {
+                slidesPerView: 1,
+                spaceBetween: 20,
+            },
+            '575': {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            '767': {
+                slidesPerView: 3,
+                spaceBetween: 20,
+            },
+            '1200': {
+                slidesPerView: 4,
+                spaceBetween: 20,
+            },
+            '1400': {
+                slidesPerView: 5,
+                spaceBetween: 20,
+            },
+            }"
         :modules="modules"
         class="mySwiper">
         <swiper-slide v-for="movie in store.resultPopularArray" :key="movie.id">
@@ -69,7 +91,7 @@
       </swiper>
 
 
-      <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultMoviesArray.length === 0">
+      <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultMoviesArray.length === 0 && store.resultSeriesArray.length  === 0">
         <h1 class="text-white me-2">Top Rated</h1>
         <div class="pg-btn-container">
           <button type="button" class="btn btn-danger me-2">Previous Page</button>  
@@ -79,10 +101,32 @@
       
       <!-- Swiper per i film più votati -->
       <swiper
-        v-if="store.resultMoviesArray.length === 0"
+        v-if="store.resultMoviesArray.length === 0 && store.resultSeriesArray.length  === 0"
         :slidesPerView="5"
         :spaceBetween="30"
         :pagination="{ clickable: true,}"
+        :breakpoints="{
+            '0': {
+                slidesPerView: 1,
+                spaceBetween: 20,
+            },
+            '575': {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            '767': {
+                slidesPerView: 3,
+                spaceBetween: 20,
+            },
+            '1200': {
+                slidesPerView: 4,
+                spaceBetween: 20,
+            },
+            '1400': {
+                slidesPerView: 5,
+                spaceBetween: 20,
+            },
+            }"
         :modules="modules"
         class="mySwiper">
         <swiper-slide v-for="movie in store.resultTopRated" :key="movie.id">
@@ -115,6 +159,28 @@
         :slidesPerView="5"
         :spaceBetween="30"
         :pagination="{ clickable: true,}"
+        :breakpoints="{
+            '0': {
+                slidesPerView: 1,
+                spaceBetween: 20,
+            },
+            '575': {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            '767': {
+                slidesPerView: 3,
+                spaceBetween: 20,
+            },
+            '1200': {
+                slidesPerView: 4,
+                spaceBetween: 20,
+            },
+            '1400': {
+                slidesPerView: 5,
+                spaceBetween: 20,
+            },
+            }"
         :modules="modules"
         class="mySwiper">
         <swiper-slide v-for="movie in store.resultMoviesArray" :key="movie.id">
@@ -147,6 +213,28 @@
         :slidesPerView="5"
         :spaceBetween="30"
         :pagination="{ clickable: true,}"
+        :breakpoints="{
+            '0': {
+                slidesPerView: 1,
+                spaceBetween: 20,
+            },
+            '575': {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            '767': {
+                slidesPerView: 3,
+                spaceBetween: 20,
+            },
+            '1200': {
+                slidesPerView: 4,
+                spaceBetween: 20,
+            },
+            '1400': {
+                slidesPerView: 5,
+                spaceBetween: 20,
+            },
+            }"
         :modules="modules"
         class="mySwiper">
         <swiper-slide v-for="serie in store.resultSeriesArray" :key="serie.id">

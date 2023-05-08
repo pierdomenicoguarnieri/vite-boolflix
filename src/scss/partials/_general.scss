@@ -4,4 +4,5 @@ body{
   background-color: lighten($primary-color, 10%) !important;
   scroll-behavior: smooth !important;
   min-height: 100vh;
+  min-width: 340px;
 }

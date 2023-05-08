@@ -89,7 +89,7 @@ export default {
           <span class="ms-1">({{originalRating.toFixed(2)}})</span>
         </div>
 
-        <div class="pg-modal-container">
+        <div class="pg-modal-container pt-2">
           <button type="button" class="btn btn-danger" @click="store.showModal = !store.showModal, callApiInfos(id, isMovie)">Info</button>
         </div>
       </div>
@@ -120,6 +120,11 @@ export default {
       .pg-card-text{
         top: 100%;
         transition: all .5s;
+        .pg-modal-container{
+          button{
+            font-size: 0.8rem;
+          }
+        }
         .pg-titles-container{
           .pg-original-title{
             font-weight: 600;

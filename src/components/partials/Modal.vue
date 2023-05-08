@@ -53,12 +53,12 @@ export default {
 
           <!-- Bottone di chiusura -->
           <div class="btn-container">
-            <button type="button" class="btn btn-dark rounded-circle" @click.stop="store.showModal = !store.showModal, flag = true, numberOfCast = 5"><i class="fa-solid fa-x"></i></button>
+            <button type="button" class="btn btn-dark rounded-circle p-0" @click.stop="store.showModal = !store.showModal, flag = true, numberOfCast = 5"><i class="fa-solid fa-x"></i></button>
           </div>
         </div>
 
         <!-- Immagine di sfondo dinamica -->
-        <img class="position-absolute top-0 left-0" :src="`https://image.tmdb.org/t/p/original${image}`" :alt="title">
+        <img class="position-absolute top-0 left-0" :src="`https://image.tmdb.org/t/p/original${image}`">
       </div>
 
       <!-- Modal Body -->
@@ -76,7 +76,7 @@ export default {
         <div class="pg-modal-cast">
           <h4>Cast:</h4>
 
-          <div class="row row-cols-5">
+          <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
 
             <div class="col mb-4 text-center" v-for="(actor, index) in cast" :key="actor.id" v-show="index <= numberOfCast - 1">
             
@@ -119,12 +119,31 @@ export default {
     margin-top: 80px;
     width: 60%;
     .pg-modal-header{
-      height: 400px;
+      min-height: 22vw;
       overflow: hidden;
       .pg-modal-header-infos{
         z-index: 2;
         background: rgb(0,0,0);
         background: linear-gradient(90deg, rgba(0,0,0,1) 15%, rgba(255,255,255,0) 75%);
+        .btn-container{
+          button{
+            aspect-ratio: 1/1;
+            display: flex;
+            align-items: center;
+            padding: calc(0.2rem + 1vw) !important;
+          }
+          i{
+            font-size: calc(0.2rem + 1vw) !important;
+          }
+        }
+        .pg-title-container{
+          h1{
+            font-size: calc(0.5rem + 2.2vw) !important;
+          }
+          h2{
+            font-size: calc(0.5rem + 1.5vw) !important;
+          }
+        }
       }
       img{
         z-index: 1;
@@ -132,6 +151,11 @@ export default {
       }
     }
     .pg-modal-body{
+      .pg-modal-genres{
+        li{
+          font-size: calc(0.6rem + 0.4vw) !important;
+        }
+      }
       .pg-cast-image{
         width: 100%;
         aspect-ratio: 1/1;

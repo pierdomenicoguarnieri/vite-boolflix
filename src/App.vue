@@ -82,6 +82,12 @@ export default{
         console.log(store.resultCredits);
         store.isLoading = false;
       })
+    },
+    resetApi(){
+      store.resultMoviesArray = [];
+      store.resultSeriesArray = [];
+      this.getApiPopular();
+      this.getApiTopRated();
     }
   },
   mounted(){
@@ -94,7 +100,7 @@ export default{
 </script>
 
 <template>
-  <Header @searchMovie="getApi" @searchSeries="getApiSeries"/>
+  <Header @searchMovie="getApi" @searchSeries="getApiSeries" @resetPage="resetApi"/>
   <Main @getApiDetails="getApiInfos"/>
 </template>
 
