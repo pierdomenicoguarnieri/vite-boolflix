@@ -6,6 +6,7 @@
   import {store} from "../data/store.js";
   import Card from "./partials/Card.vue";
   import Modal from "./partials/Modal.vue";
+  import CardGroup from './partials/CardGroup.vue';
 
   export default {
     name: "Main",
@@ -13,7 +14,8 @@
       Swiper,
       SwiperSlide,
       Card,
-      Modal
+      Modal,
+      CardGroup
     },
     data(){
       return{
@@ -37,273 +39,16 @@
   <main>
     <div class="container py-3">
 
-      <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultMoviesArray.length === 0 && store.resultSeriesArray.length  === 0">
-        <h1 class="text-white me-2">Popular Movies</h1>
-        <!-- <div class="pg-btn-container">
-          <button type="button" class="btn btn-danger me-2">Previous Page</button>  
-          <button type="button" class="btn btn-danger">Next Page</button>  
-        </div> -->
-      </div>
+      <CardGroup :array="store.results['popularMovies']" :isMovie="true" :show="!store.search" title="Popular Movies" @getInfosApi="getInfos"/>
 
-      <!-- Swiper per i film più popolari -->
-      <swiper
-        v-if="store.resultMoviesArray.length === 0 && store.resultSeriesArray.length  === 0"
-        :slidesPerView="5"
-        :spaceBetween="30"
-        :pagination="{ clickable: true,}"
-        :breakpoints="{
-          '0': {
-              slidesPerView: 1,
-              spaceBetween: 20,
-          },
-          '575': {
-              slidesPerView: 2,
-              spaceBetween: 20,
-          },
-          '767': {
-              slidesPerView: 3,
-              spaceBetween: 20,
-          },
-          '1200': {
-              slidesPerView: 4,
-              spaceBetween: 20,
-          },
-          '1400': {
-              slidesPerView: 5,
-              spaceBetween: 20,
-          },
-          }"
-        :mousewheel="true"
-        :modules="modules"
-        class="mySwiper">
-        <swiper-slide v-for="movie in store.resultPopularArray" :key="movie.id">
-          <Card
-            :image="movie.poster_path"
-            :originalTitle="movie.original_title"
-            :translatedTitle="movie.title"
-            :language="movie.original_language"
-            :rating="Math.ceil(movie.vote_average/2)"
-            :originalRating="(movie.vote_average/2)"
-            :id="movie.id"
-            :isMovie="true"
-            @getApiInfos="getInfos"/>
-          </swiper-slide>
-      </swiper>
+      <CardGroup :array="store.results['popularSeries']" :isMovie="false" :show="!store.search" title="Popular Series" @getInfosApi="getInfos"/>
 
-      <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultMoviesArray.length === 0 && store.resultSeriesArray.length  === 0">
-        <h1 class="text-white me-2">Popular Series</h1>
-        <!-- <div class="pg-btn-container">
-          <button type="button" class="btn btn-danger me-2">Previous Page</button>  
-          <button type="button" class="btn btn-danger">Next Page</button>  
-        </div> -->
-      </div>
+      <CardGroup :array="store.results['topRatedMovies']" :isMovie="true" :show="!store.search" title="Top Rated Movies" @getInfosApi="getInfos"/>
 
-      <!-- Swiper per le serie più popolari -->
-      <swiper
-        v-if="store.resultMoviesArray.length === 0 && store.resultSeriesArray.length  === 0"
-        :slidesPerView="5"
-        :spaceBetween="30"
-        :pagination="{ clickable: true,}"
-        :breakpoints="{
-          '0': {
-              slidesPerView: 1,
-              spaceBetween: 20,
-          },
-          '575': {
-              slidesPerView: 2,
-              spaceBetween: 20,
-          },
-          '767': {
-              slidesPerView: 3,
-              spaceBetween: 20,
-          },
-          '1200': {
-              slidesPerView: 4,
-              spaceBetween: 20,
-          },
-          '1400': {
-              slidesPerView: 5,
-              spaceBetween: 20,
-          },
-          }"
-        :mousewheel="true"
-        :modules="modules"
-        class="mySwiper">
-        <swiper-slide v-for="serie in store.resultPopularSeriesArray" :key="serie.id">
-          <Card
-            :image="serie.poster_path"
-            :originalTitle="serie.original_name"
-            :translatedTitle="serie.name"
-            :language="serie.original_language"
-            :rating="Math.ceil(serie.vote_average/2)"
-            :originalRating="(serie.vote_average/2)"
-            :id="serie.id"
-            :isMovie="false"
-            @getApiInfos="getInfos"/>
-          </swiper-slide>
-      </swiper>
+      <CardGroup :array="store.results['searchMovies']" :isMovie="true" :show="store.search" title="Searched Movies" @getInfosApi="getInfos"/>
 
-      <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultMoviesArray.length === 0 && store.resultSeriesArray.length  === 0">
-        <h1 class="text-white me-2">Top Rated Movies</h1>
-        <!-- <div class="pg-btn-container">
-          <button type="button" class="btn btn-danger me-2">Previous Page</button>  
-          <button type="button" class="btn btn-danger">Next Page</button>  
-        </div> -->
-      </div>
-      
-      <!-- Swiper per i film più votati -->
-      <swiper
-        v-if="store.resultMoviesArray.length === 0 && store.resultSeriesArray.length  === 0"
-        :slidesPerView="5"
-        :spaceBetween="30"
-        :pagination="{ clickable: true,}"
-        :breakpoints="{
-          '0': {
-              slidesPerView: 1,
-              spaceBetween: 20,
-          },
-          '575': {
-              slidesPerView: 2,
-              spaceBetween: 20,
-          },
-          '767': {
-              slidesPerView: 3,
-              spaceBetween: 20,
-          },
-          '1200': {
-              slidesPerView: 4,
-              spaceBetween: 20,
-          },
-          '1400': {
-              slidesPerView: 5,
-              spaceBetween: 20,
-          },
-          }"
-        :mousewheel="true"
-        :modules="modules"
-        class="mySwiper">
-        <swiper-slide v-for="movie in store.resultTopRated" :key="movie.id">
+      <CardGroup :array="store.results['searchSeries']" :isMovie="true" :show="store.search" title="Searched Series" @getInfosApi="getInfos"/>
 
-          <Card
-            :image="movie.poster_path"
-            :originalTitle="movie.original_title"
-            :translatedTitle="movie.title"
-            :language="movie.original_language"
-            :rating="Math.ceil(movie.vote_average/2)"
-            :originalRating="(movie.vote_average/2)"
-            :id="movie.id"
-            :isMovie="true"
-            @getApiInfos="getInfos"/>
-          </swiper-slide>
-      </swiper>
-
-
-      <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultMoviesArray.length > 0">
-        <h1 class="text-white me-2">Searched Movies</h1>
-        <!-- <div class="pg-btn-container">
-          <button type="button" class="btn btn-danger me-2">Previous Page</button>  
-          <button type="button" class="btn btn-danger">Next Page</button>  
-        </div> -->
-      </div>
-
-      <!-- Swiper per i film cercati -->
-      <swiper
-        :slidesPerView="5"
-        :spaceBetween="30"
-        :pagination="{ clickable: true,}"
-        :breakpoints="{
-          '0': {
-              slidesPerView: 1,
-              spaceBetween: 20,
-          },
-          '575': {
-              slidesPerView: 2,
-              spaceBetween: 20,
-          },
-          '767': {
-              slidesPerView: 3,
-              spaceBetween: 20,
-          },
-          '1200': {
-              slidesPerView: 4,
-              spaceBetween: 20,
-          },
-          '1400': {
-              slidesPerView: 5,
-              spaceBetween: 20,
-          },
-          }"
-        :mousewheel="true"
-        :modules="modules"
-        class="mySwiper">
-        <swiper-slide v-for="movie in store.resultMoviesArray" :key="movie.id">
-
-          <Card
-            :image="movie.poster_path"
-            :originalTitle="movie.original_title"
-            :translatedTitle="movie.title"
-            :language="movie.original_language"
-            :rating="Math.ceil(movie.vote_average/2)"
-            :originalRating="(movie.vote_average/2)"
-            :id="movie.id"
-            :isMovie="true"
-            @getApiInfos="getInfos"/>
-          </swiper-slide>
-      </swiper>
-
-
-      <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultSeriesArray.length > 0">
-        <h1 class="text-white me-2">Searched TV Series</h1>
-        <!-- <div class="pg-btn-container">
-          <button type="button" class="btn btn-danger me-2">Previous Page</button>  
-          <button type="button" class="btn btn-danger">Next Page</button>  
-        </div> -->
-      </div>
-      
-      <!-- Swiper per le Serie TV -->
-      <swiper
-        :slidesPerView="5"
-        :spaceBetween="30"
-        :pagination="{ clickable: true,}"
-        :breakpoints="{
-          '0': {
-              slidesPerView: 1,
-              spaceBetween: 20,
-          },
-          '575': {
-              slidesPerView: 2,
-              spaceBetween: 20,
-          },
-          '767': {
-              slidesPerView: 3,
-              spaceBetween: 20,
-          },
-          '1200': {
-              slidesPerView: 4,
-              spaceBetween: 20,
-          },
-          '1400': {
-              slidesPerView: 5,
-              spaceBetween: 20,
-          },
-          }"
-        :mousewheel="true"
-        :modules="modules"
-        class="mySwiper">
-        <swiper-slide v-for="serie in store.resultSeriesArray" :key="serie.id">
-
-          <Card
-            :image="serie.poster_path"
-            :originalTitle="serie.original_name"
-            :translatedTitle="serie.name"
-            :language="serie.original_language"
-            :rating="Math.ceil(serie.vote_average/2)"
-            :originalRating="(serie.vote_average/2)"
-            :id="serie.id"
-            :isMovie="false"
-            @getApiInfos="getInfos"/>
-          </swiper-slide>
-      </swiper>
     </div>
 
     <!-- Modale -->
@@ -320,7 +65,6 @@
 </template>
 
 <style lang="scss" scoped>
-  @import "swiper/swiper.css";
 
   main{
     padding-top: 80px;
