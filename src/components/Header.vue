@@ -27,7 +27,7 @@ export default {
           type="text"
           class="form-control me-2"
           placeholder="Cerca un film"
-          @keyup.enter="$emit('searchMovie'), $emit('searchSeries'), store.movieTitleToSearch = ''">
+          @keyup.enter="$emit('searchMovie'), $emit('searchSeries'), store.movieTitleToSearch = '', store.search = true">
         <button class="btn btn-danger" @click="$emit('searchMovie'), $emit('searchSeries') ,store.movieTitleToSearch= ''">Search</button>
       </div>
     </div>
