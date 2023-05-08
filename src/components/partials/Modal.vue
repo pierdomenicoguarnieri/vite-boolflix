@@ -20,6 +20,7 @@ export default {
     translatedTitleSerie: String,
     releaseDate: String,
     image: String,
+    overview: String,
     genres: Array,
     rate: Number,
     cast: Array,
@@ -63,6 +64,11 @@ export default {
 
       <!-- Modal Body -->
       <div class="pg-modal-body p-3">
+
+        <div class="pg-modal-overview">
+          <h3>Descrizione:</h3>
+          <p class="overflow-scroll">{{overview}}</p>
+        </div>
 
         <!-- Container dei generi -->
         <div class="pg-modal-genres">
@@ -151,6 +157,11 @@ export default {
       }
     }
     .pg-modal-body{
+      .pg-modal-overview{
+        p{
+          max-height: 150px;
+        }
+      }
       .pg-modal-genres{
         li{
           font-size: calc(0.6rem + 0.4vw) !important;

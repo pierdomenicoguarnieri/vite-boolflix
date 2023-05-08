@@ -7,7 +7,6 @@ export default {
     originalTitle: String,
     translatedTitle: String,
     language: String,
-    overview: String,
     rating: Number,
     originalRating: Number,
     id: Number,
@@ -20,10 +19,6 @@ export default {
     }
   },
   methods:{
-    getHeight(id){
-      const textContainer = document.getElementById(id);
-      this.textHeight = textContainer.offsetHeight;
-    },
     callApiInfos(id, flag){
       store.idInfos = id;
       flag ? store.type = "movie" : store.type = "tv";
@@ -34,7 +29,7 @@ export default {
 </script>
 
 <template>
-  <div class="pg-card d-flex flex-column position-relative mb-5" @mouseenter="getHeight(id)">
+  <div class="pg-card d-flex flex-column position-relative mb-5">
 
     <!-- Container immagine -->
     <div class="pg-img-container rounded-3 overflow-hidden">
@@ -45,7 +40,7 @@ export default {
     <!-- Contenitore del testo -->
     <div class="pg-card-text w-100 h-100 position-absolute p-2">
 
-      <div class="pg-upper-text-container" :id="id">
+      <div class="pg-upper-text-container">
 
         <!-- Contenitore dei titoli -->
         <div class="pg-titles-container">
@@ -92,12 +87,6 @@ export default {
         <div class="pg-modal-container pt-2">
           <button type="button" class="btn btn-danger" @click="store.showModal = !store.showModal, callApiInfos(id, isMovie)">Info</button>
         </div>
-      </div>
-      
-      <!-- Overview Container -->
-      <div class="pg-overview-container overflow-auto mt-2 mb-5" :style="{maxHeight: `calc(100% - ${this.textHeight}px)`}" v-if="overview !== ''">
-        <span>Descrizione:</span>
-        <p class="pe-3">{{overview}}</p>
       </div>
     </div>
   </div>

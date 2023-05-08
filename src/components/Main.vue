@@ -82,7 +82,6 @@
             :originalTitle="movie.original_title"
             :translatedTitle="movie.title"
             :language="movie.original_language"
-            :overview="movie.overview"
             :rating="Math.ceil(movie.vote_average/2)"
             :originalRating="(movie.vote_average/2)"
             :id="movie.id"
@@ -138,7 +137,6 @@
             :originalTitle="movie.original_title"
             :translatedTitle="movie.title"
             :language="movie.original_language"
-            :overview="movie.overview"
             :rating="Math.ceil(movie.vote_average/2)"
             :originalRating="(movie.vote_average/2)"
             :id="movie.id"
@@ -193,7 +191,6 @@
             :originalTitle="movie.original_title"
             :translatedTitle="movie.title"
             :language="movie.original_language"
-            :overview="movie.overview"
             :rating="Math.ceil(movie.vote_average/2)"
             :originalRating="(movie.vote_average/2)"
             :id="movie.id"
@@ -248,7 +245,6 @@
             :originalTitle="serie.original_name"
             :translatedTitle="serie.name"
             :language="serie.original_language"
-            :overview="serie.overview"
             :rating="Math.ceil(serie.vote_average/2)"
             :originalRating="(serie.vote_average/2)"
             :id="serie.id"
@@ -265,6 +261,7 @@
       :titleSerie="store.resultDetails.original_name"
       :translatedTitleSerie="store.resultDetails.name"
       :image="store.resultDetails.backdrop_path"
+      :overview="store.resultDetails.overview"
       :genres="store.resultDetails.genres"
       :cast="store.resultCredits.cast"/>
     </main>
@@ -272,7 +269,7 @@
 
 <style lang="scss" scoped>
   @import "swiper/swiper.css";
-  
+
   main{
     padding-top: 80px;
     overflow: scroll;
