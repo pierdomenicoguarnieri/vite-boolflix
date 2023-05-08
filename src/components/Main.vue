@@ -1,6 +1,6 @@
 <script>
   import { Swiper, SwiperSlide } from 'swiper/vue';
-  import { Pagination } from 'swiper';
+  import { Mousewheel, Pagination } from 'swiper';
   import 'swiper/css';
   import 'swiper/css/pagination';
   import {store} from "../data/store.js";
@@ -22,7 +22,7 @@
     },
     setup() {
       return {
-        modules: [Pagination],
+        modules: [Mousewheel, Pagination],
       };
     },
     methods:{
@@ -39,10 +39,10 @@
 
       <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultMoviesArray.length === 0 && store.resultSeriesArray.length  === 0">
         <h1 class="text-white me-2">Popular Movies</h1>
-        <div class="pg-btn-container">
+        <!-- <div class="pg-btn-container">
           <button type="button" class="btn btn-danger me-2">Previous Page</button>  
           <button type="button" class="btn btn-danger">Next Page</button>  
-        </div>
+        </div> -->
       </div>
 
       <!-- Swiper per i film più popolari -->
@@ -52,27 +52,28 @@
         :spaceBetween="30"
         :pagination="{ clickable: true,}"
         :breakpoints="{
-            '0': {
-                slidesPerView: 1,
-                spaceBetween: 20,
-            },
-            '575': {
-                slidesPerView: 2,
-                spaceBetween: 20,
-            },
-            '767': {
-                slidesPerView: 3,
-                spaceBetween: 20,
-            },
-            '1200': {
-                slidesPerView: 4,
-                spaceBetween: 20,
-            },
-            '1400': {
-                slidesPerView: 5,
-                spaceBetween: 20,
-            },
-            }"
+          '0': {
+              slidesPerView: 1,
+              spaceBetween: 20,
+          },
+          '575': {
+              slidesPerView: 2,
+              spaceBetween: 20,
+          },
+          '767': {
+              slidesPerView: 3,
+              spaceBetween: 20,
+          },
+          '1200': {
+              slidesPerView: 4,
+              spaceBetween: 20,
+          },
+          '1400': {
+              slidesPerView: 5,
+              spaceBetween: 20,
+          },
+          }"
+        :mousewheel="true"
         :modules="modules"
         class="mySwiper">
         <swiper-slide v-for="movie in store.resultPopularArray" :key="movie.id">
@@ -93,10 +94,10 @@
 
       <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultMoviesArray.length === 0 && store.resultSeriesArray.length  === 0">
         <h1 class="text-white me-2">Top Rated</h1>
-        <div class="pg-btn-container">
+        <!-- <div class="pg-btn-container">
           <button type="button" class="btn btn-danger me-2">Previous Page</button>  
           <button type="button" class="btn btn-danger">Next Page</button>  
-        </div>
+        </div> -->
       </div>
       
       <!-- Swiper per i film più votati -->
@@ -106,27 +107,28 @@
         :spaceBetween="30"
         :pagination="{ clickable: true,}"
         :breakpoints="{
-            '0': {
-                slidesPerView: 1,
-                spaceBetween: 20,
-            },
-            '575': {
-                slidesPerView: 2,
-                spaceBetween: 20,
-            },
-            '767': {
-                slidesPerView: 3,
-                spaceBetween: 20,
-            },
-            '1200': {
-                slidesPerView: 4,
-                spaceBetween: 20,
-            },
-            '1400': {
-                slidesPerView: 5,
-                spaceBetween: 20,
-            },
-            }"
+          '0': {
+              slidesPerView: 1,
+              spaceBetween: 20,
+          },
+          '575': {
+              slidesPerView: 2,
+              spaceBetween: 20,
+          },
+          '767': {
+              slidesPerView: 3,
+              spaceBetween: 20,
+          },
+          '1200': {
+              slidesPerView: 4,
+              spaceBetween: 20,
+          },
+          '1400': {
+              slidesPerView: 5,
+              spaceBetween: 20,
+          },
+          }"
+        :mousewheel="true"
         :modules="modules"
         class="mySwiper">
         <swiper-slide v-for="movie in store.resultTopRated" :key="movie.id">
@@ -148,10 +150,10 @@
 
       <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultMoviesArray.length > 0">
         <h1 class="text-white me-2">Searched Movies</h1>
-        <div class="pg-btn-container">
+        <!-- <div class="pg-btn-container">
           <button type="button" class="btn btn-danger me-2">Previous Page</button>  
           <button type="button" class="btn btn-danger">Next Page</button>  
-        </div>
+        </div> -->
       </div>
 
       <!-- Swiper per i film cercati -->
@@ -160,27 +162,28 @@
         :spaceBetween="30"
         :pagination="{ clickable: true,}"
         :breakpoints="{
-            '0': {
-                slidesPerView: 1,
-                spaceBetween: 20,
-            },
-            '575': {
-                slidesPerView: 2,
-                spaceBetween: 20,
-            },
-            '767': {
-                slidesPerView: 3,
-                spaceBetween: 20,
-            },
-            '1200': {
-                slidesPerView: 4,
-                spaceBetween: 20,
-            },
-            '1400': {
-                slidesPerView: 5,
-                spaceBetween: 20,
-            },
-            }"
+          '0': {
+              slidesPerView: 1,
+              spaceBetween: 20,
+          },
+          '575': {
+              slidesPerView: 2,
+              spaceBetween: 20,
+          },
+          '767': {
+              slidesPerView: 3,
+              spaceBetween: 20,
+          },
+          '1200': {
+              slidesPerView: 4,
+              spaceBetween: 20,
+          },
+          '1400': {
+              slidesPerView: 5,
+              spaceBetween: 20,
+          },
+          }"
+        :mousewheel="true"
         :modules="modules"
         class="mySwiper">
         <swiper-slide v-for="movie in store.resultMoviesArray" :key="movie.id">
@@ -202,10 +205,10 @@
 
       <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultSeriesArray.length > 0">
         <h1 class="text-white me-2">Searched TV Series</h1>
-        <div class="pg-btn-container">
+        <!-- <div class="pg-btn-container">
           <button type="button" class="btn btn-danger me-2">Previous Page</button>  
           <button type="button" class="btn btn-danger">Next Page</button>  
-        </div>
+        </div> -->
       </div>
       
       <!-- Swiper per le Serie TV -->
@@ -214,27 +217,28 @@
         :spaceBetween="30"
         :pagination="{ clickable: true,}"
         :breakpoints="{
-            '0': {
-                slidesPerView: 1,
-                spaceBetween: 20,
-            },
-            '575': {
-                slidesPerView: 2,
-                spaceBetween: 20,
-            },
-            '767': {
-                slidesPerView: 3,
-                spaceBetween: 20,
-            },
-            '1200': {
-                slidesPerView: 4,
-                spaceBetween: 20,
-            },
-            '1400': {
-                slidesPerView: 5,
-                spaceBetween: 20,
-            },
-            }"
+          '0': {
+              slidesPerView: 1,
+              spaceBetween: 20,
+          },
+          '575': {
+              slidesPerView: 2,
+              spaceBetween: 20,
+          },
+          '767': {
+              slidesPerView: 3,
+              spaceBetween: 20,
+          },
+          '1200': {
+              slidesPerView: 4,
+              spaceBetween: 20,
+          },
+          '1400': {
+              slidesPerView: 5,
+              spaceBetween: 20,
+          },
+          }"
+        :mousewheel="true"
         :modules="modules"
         class="mySwiper">
         <swiper-slide v-for="serie in store.resultSeriesArray" :key="serie.id">
@@ -268,6 +272,7 @@
 
 <style lang="scss" scoped>
   @import "swiper/swiper.css";
+  
   main{
     padding-top: 80px;
     overflow: scroll;
