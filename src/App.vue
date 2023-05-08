@@ -53,6 +53,16 @@ export default{
         store.isLoading = false;
       })
     },
+    getApiPopularSeries(){
+      axios.get(store.apiUrlPopularSeries)
+      .then(result => {
+        store.isLoading = true;
+        store.resultPopularSeriesArray = [];
+        store.resultPopularSeriesArray = result.data.results;
+        console.log("Pop",store.resultPopularSeriesArray);
+        store.isLoading = false;
+      })
+    },
     getApiTopRated(){
       axios.get(store.apiUrlTopRated)
       .then(result => {
@@ -87,6 +97,7 @@ export default{
       store.resultMoviesArray = [];
       store.resultSeriesArray = [];
       this.getApiPopular();
+      this.getApiPopularSeries();
       this.getApiTopRated();
     }
   },
@@ -94,6 +105,7 @@ export default{
     this.getApi();
     this.getApiSeries();
     this.getApiPopular();
+    this.getApiPopularSeries();
     this.getApiTopRated();
   }
 }

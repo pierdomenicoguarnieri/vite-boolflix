@@ -90,9 +90,61 @@
           </swiper-slide>
       </swiper>
 
+      <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultMoviesArray.length === 0 && store.resultSeriesArray.length  === 0">
+        <h1 class="text-white me-2">Popular Series</h1>
+        <!-- <div class="pg-btn-container">
+          <button type="button" class="btn btn-danger me-2">Previous Page</button>  
+          <button type="button" class="btn btn-danger">Next Page</button>  
+        </div> -->
+      </div>
+
+      <!-- Swiper per le serie più popolari -->
+      <swiper
+        v-if="store.resultMoviesArray.length === 0 && store.resultSeriesArray.length  === 0"
+        :slidesPerView="5"
+        :spaceBetween="30"
+        :pagination="{ clickable: true,}"
+        :breakpoints="{
+          '0': {
+              slidesPerView: 1,
+              spaceBetween: 20,
+          },
+          '575': {
+              slidesPerView: 2,
+              spaceBetween: 20,
+          },
+          '767': {
+              slidesPerView: 3,
+              spaceBetween: 20,
+          },
+          '1200': {
+              slidesPerView: 4,
+              spaceBetween: 20,
+          },
+          '1400': {
+              slidesPerView: 5,
+              spaceBetween: 20,
+          },
+          }"
+        :mousewheel="true"
+        :modules="modules"
+        class="mySwiper">
+        <swiper-slide v-for="serie in store.resultPopularSeriesArray" :key="serie.id">
+          <Card
+            :image="serie.poster_path"
+            :originalTitle="serie.original_name"
+            :translatedTitle="serie.name"
+            :language="serie.original_language"
+            :rating="Math.ceil(serie.vote_average/2)"
+            :originalRating="(serie.vote_average/2)"
+            :id="serie.id"
+            :isMovie="false"
+            @getApiInfos="getInfos"/>
+          </swiper-slide>
+      </swiper>
 
       <div class="pg-swiper-header d-flex py-2 align-items-center" v-if="store.resultMoviesArray.length === 0 && store.resultSeriesArray.length  === 0">
-        <h1 class="text-white me-2">Top Rated</h1>
+        <h1 class="text-white me-2">Top Rated Movies</h1>
         <!-- <div class="pg-btn-container">
           <button type="button" class="btn btn-danger me-2">Previous Page</button>  
           <button type="button" class="btn btn-danger">Next Page</button>  
