@@ -16,62 +16,19 @@ export default{
   },
   methods:{
     getApi(){
-      axios.get(store.apiUrl, {
-        params:{
-          query: store.movieTitleToSearch
-        }
-      })
-      .then(result => {
-        store.isLoading = true;
-        store.resultMoviesArray = [];
-        store.resultMoviesArray = result.data.results;
-        console.log(store.resultMoviesArray)
-        store.isLoading = false;
-      })
+      this.getResults("search/movie", "searchMovies", true);
     },
     getApiSeries(){
-      axios.get(store.apiUrlTv, {
-        params:{
-          query: store.movieTitleToSearch
-        }
-      })
-      .then(result => {
-        store.isLoading = true;
-        store.resultSeriesArray = [];
-        store.resultSeriesArray = result.data.results;
-        console.log(store.resultSeriesArray);
-        store.isLoading = false;
-      })
+      this.getResults("search/tv", "searchSeries", true);
     },
     getApiPopular(){
-      axios.get(store.apiUrlPopular)
-      .then(result => {
-        store.isLoading = true;
-        store.resultPopularArray = [];
-        store.resultPopularArray = result.data.results;
-        console.log("Pop",store.resultPopularArray);
-        store.isLoading = false;
-      })
+      this.getResults("movie/popular", "popularMovies", false);
     },
     getApiPopularSeries(){
-      axios.get(store.apiUrlPopularSeries)
-      .then(result => {
-        store.isLoading = true;
-        store.resultPopularSeriesArray = [];
-        store.resultPopularSeriesArray = result.data.results;
-        console.log("Pop",store.resultPopularSeriesArray);
-        store.isLoading = false;
-      })
+      this.getResults("tv/top_rated", "popularSeries", false);
     },
     getApiTopRated(){
-      axios.get(store.apiUrlTopRated)
-      .then(result => {
-        store.isLoading = true;
-        store.resultTopRated = [];
-        store.resultTopRated = result.data.results;
-        console.log("Pop",store.resultTopRated);
-        store.isLoading = false;
-      })
+      this.getResults("movie/top_rated", "topRatedMovies", false);
     },
     getApiInfos(){
       axios.get(`https://api.themoviedb.org/3/${store.type}/${store.idInfos}?api_key=61bccd436e95e107643dd33da21f2885&language=it-IT`)
@@ -94,11 +51,37 @@ export default{
       })
     },
     resetApi(){
-      store.resultMoviesArray = [];
-      store.resultSeriesArray = [];
+      store.results = [];
+      store.search = false,
       this.getApiPopular();
       this.getApiPopularSeries();
       this.getApiTopRated();
+    },
+    getResults(relativePath, arrayName, query){
+      let params = {}
+      if (query){
+        params = {
+          api_key: store.api_key,
+          language: store.language,
+          query: store.movieTitleToSearch
+        }
+      }else{
+        params = {
+        api_key: store.api_key,
+        language: store.language
+        }
+      }
+      store.isLoading = true;
+
+      axios.get(store.baseUrl + relativePath, {
+        params
+      })
+      .then(result => {
+        store.results[arrayName] = [];
+        store.results[arrayName] = result.data.results;
+        console.log(arrayName, store.results[arrayName]);
+        store.isLoading = false;
+      })
     }
   },
   mounted(){
