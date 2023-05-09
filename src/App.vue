@@ -16,17 +16,21 @@ export default{
   },
   methods:{
     getApi(){
-      this.getResults("search/movie", "searchMovies", true);
+      this.getResults("search/movie", "searchMovies", true, false);
     },
+
     getApiSeries(){
-      this.getResults("search/tv", "searchSeries", true);
+      this.getResults("search/tv", "searchSeries", true, false);
     },
+
     getApiPopular(){
-      this.getResults("movie/popular", "popularMovies", false);
+      this.getResults("movie/popular", "popularMovies", false, false);
     },
+
     getApiPopularSeries(){
-      this.getResults("tv/top_rated", "popularSeries", false);
+      this.getResults("tv/top_rated", "popularSeries", false, false);
     },
+
     getApiTopRated(){
       this.getResults("movie/top_rated", "topRatedMovies", false, false);
     },
@@ -81,14 +85,8 @@ export default{
         store.isLoading = false;
       })
     },
-    resetApi(){
-      store.results = [];
-      store.search = false,
-      this.getApiPopular();
-      this.getApiPopularSeries();
-      this.getApiTopRated();
-    },
-    getResults(relativePath, arrayName, query){
+    
+    getResults(relativePath, arrayName, query, isGenre){
       let params = {}
       if (query){
         params = {
@@ -98,21 +96,27 @@ export default{
         }
       }else{
         params = {
-        api_key: store.api_key,
-        language: store.language
+          api_key: store.api_key,
+          language: store.language
         }
       }
-      store.isLoading = true;
 
       axios.get(store.baseUrl + relativePath, {
         params
       })
       .then(result => {
-        store.results[arrayName] = [];
-        store.results[arrayName] = result.data.results;
-        console.log(arrayName, store.results[arrayName]);
-        store.isLoading = false;
+        if(isGenre){
+          store.results[arrayName] = [];
+          store.results[arrayName] = result.data.genres;
+          console.log(arrayName, store.results[arrayName]);
+          this.getApiAllMovieGenres("discover/movie");
+        }else{
+          store.results[arrayName] = [];
+          store.results[arrayName] = result.data.results;
+          console.log(arrayName, store.results[arrayName]);
+        }
       })
+    },
     }
   },
   mounted(){
