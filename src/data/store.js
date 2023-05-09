@@ -12,5 +12,7 @@ export const store = reactive({
   idInfos: 0,
   type: "",
   isLoading: true,
+  modalIsLoading: true,
   search: false,
+  waitForArray: false
 })
