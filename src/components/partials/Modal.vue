@@ -33,7 +33,7 @@ export default {
   <div class="pg-modal-wrapper d-flex align-items-center justify-content-center overflow-scroll" v-if="store.showModal" @click="store.showModal = !store.showModal, flag = true, numberOfCast = 5">
 
     <!-- Loading -->
-    <Loading v-if="store.isLoading"/>
+    <Loading v-if="store.modalIsLoading"/>
 
     <!-- Modal, interrompe il click precedente, se si preme sul modale non si chiuderà -->
     <div class="pg-modal overflow-hidden rounded-2 bg-dark text-white mb-2" v-else @click.stop="store.showModal = true">

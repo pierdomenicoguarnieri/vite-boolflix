@@ -7,6 +7,7 @@
   import Card from "./partials/Card.vue";
   import Modal from "./partials/Modal.vue";
   import CardGroup from './partials/CardGroup.vue';
+  import Loading from "./partials/Loading.vue";
 
   export default {
     name: "Main",
@@ -15,7 +16,8 @@
       SwiperSlide,
       Card,
       Modal,
-      CardGroup
+      CardGroup,
+      Loading
     },
     data(){
       return{
@@ -36,8 +38,9 @@
 </script>
 
 <template>
-  <main>
-    <div class="container py-3">
+  <main class="d-flex justify-content-center align-items-center">
+    <Loading v-if="store.isLoading"/>
+    <div class="container py-3" v-else>
 
       <CardGroup :array="store.results['popularMovies']" :isMovie="true" :show="!store.search" title="Popular Movies" @getInfosApi="getInfos"/>
 
