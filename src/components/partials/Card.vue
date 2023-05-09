@@ -34,7 +34,7 @@ export default {
     <!-- Container immagine -->
     <div class="pg-img-container rounded-3 overflow-hidden">
       <img v-if="image != null" :src="`https://image.tmdb.org/t/p/w342${image}`" :alt="originalTitle" :title="originalTitle">
-      <img v-else src="img/no-image.jpg" :alt="originalTitle" :title="originalTitle">
+      <img v-else src="/img/no-image.jpg" :alt="originalTitle" :title="originalTitle">
     </div>
 
     <!-- Contenitore del testo -->
@@ -96,6 +96,8 @@ export default {
     .pg-card{
       color: white;
       overflow: hidden;
+      width: 100%;
+      height: 100%;
       .pg-img-container{
         width: 100%;
         aspect-ratio: 2/3;

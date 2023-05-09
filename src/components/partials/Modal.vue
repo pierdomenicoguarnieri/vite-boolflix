@@ -73,8 +73,8 @@ export default {
         <!-- Container dei generi -->
         <div class="pg-modal-genres">
           <h4>Generi:</h4>
-          <ul class="list-unstyled d-flex">
-            <li class="px-2 py-1 rounded-3 bg-danger me-2" v-for="genre in genres" :key="genre.id">{{ genre.name }}</li>
+          <ul class="list-unstyled d-flex flex-wrap">
+            <li class="px-2 py-1 rounded-3 bg-danger me-2 mb-2 text-center" v-for="genre in genres" :key="genre.id">{{ genre.name }}</li>
           </ul>
         </div>
 
@@ -91,7 +91,7 @@ export default {
                 <img :src="`https://image.tmdb.org/t/p/original${actor.profile_path}`" :alt="actor.name" :title="actor.name" v-show="actor.profile_path != null">
 
                 <!-- Questa immagine viene mostrata se la stringa è nulla -->
-                <img src="img/actor.png" :alt="actor.name" :title="actor.name" v-show="actor.profile_path == null">
+                <img src="/img/actor.png" :alt="actor.name" :title="actor.name" v-show="actor.profile_path == null">
               </div>
 
               <h5>{{actor.name}}</h5>
@@ -160,11 +160,15 @@ export default {
       .pg-modal-overview{
         p{
           max-height: 150px;
+          font-size: calc(0.5rem + 0.6vw);
         }
       }
       .pg-modal-genres{
-        li{
-          font-size: calc(0.6rem + 0.4vw) !important;
+        ul{
+          max-width: 100%;
+          li{
+            font-size: calc(0.6rem + 0.4vw) !important;
+          }
         }
       }
       .pg-cast-image{

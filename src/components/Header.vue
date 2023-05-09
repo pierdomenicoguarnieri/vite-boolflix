@@ -16,8 +16,8 @@ export default {
 
     <!-- Container -->
     <div class="container-fluid px-md-5 d-flex w-100 h-100 justify-content-between align-items-center">
-      <div class="container-logo w-25 h-100 me-2 me-md-0 py-2">
-        <img class="w-100 h-100" src="img/logo-boolflix.png" alt="" @click="$emit('resetPage')">
+      <div class="container-logo w-25 h-100 me-2 me-md-0 py-2 justify-content-start">
+        <img class="w-100 h-100" src="/img/logo-boolflix.png" alt="" @click="$emit('resetPage')">
       </div>
 
       <!-- Container Input -->
