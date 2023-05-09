@@ -42,18 +42,53 @@
     <Loading v-if="store.isLoading"/>
     <div class="container py-3" v-else>
 
-      <CardGroup :array="store.results['popularMovies']" :isMovie="true" :show="!store.search" title="Popular Movies" @getInfosApi="getInfos"/>
+      <CardGroup
+        :array="store.results['popularMovies']"
+        :isMovie="true"
+        :show="!store.search"
+        title="Popular Movies"
+        @getInfosApi="getInfos" />
 
-      <CardGroup :array="store.results['popularSeries']" :isMovie="false" :show="!store.search" title="Popular Series" @getInfosApi="getInfos"/>
+      <CardGroup
+        :array="store.results['popularSeries']"
+        :isMovie="false"
+        :show="!store.search"
+        title="Popular Series"
+        @getInfosApi="getInfos" />
 
-      <CardGroup :array="store.results['topRatedMovies']" :isMovie="true" :show="!store.search" title="Top Rated Movies" @getInfosApi="getInfos"/>
+      <CardGroup
+        :array="store.results['topRatedMovies']"
+        :isMovie="true"
+        :show="!store.search"
+        title="Top Rated Movies"
+        @getInfosApi="getInfos" />
+      
+      <CardGroup
+        :key="genre.id"
+        v-for="genre in store.results['movieGenre']"
+        :array="store.results[`movie${genre.name}`]"
+        :isMovie="true"
+        :show="!store.search"
+        :title="`Ultimi film nella categoria ${genre.name}`"
+        @getInfosApi="getInfos" />
 
-      <CardGroup :array="store.results['searchMovies']" :isMovie="true" :show="store.search" title="Searched Movies" @getInfosApi="getInfos"/>
+      <CardGroup
+        :array="store.results['searchMovies']"
+        :isMovie="true"
+        :show="store.search"
+        title="Searched Movies"
+        @getInfosApi="getInfos" />
 
-      <CardGroup :array="store.results['searchSeries']" :isMovie="true" :show="store.search" title="Searched Series" @getInfosApi="getInfos"/>
+      <CardGroup
+        :array="store.results['searchSeries']"
+        :isMovie="false"
+        :show="store.search"
+        title="Searched Series"
+        @getInfosApi="getInfos" />
 
     </div>
 
+    
     <!-- Modale -->
     <Modal
       :title="store.resultDetails.original_title"
