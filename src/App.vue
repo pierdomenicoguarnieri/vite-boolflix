@@ -28,7 +28,8 @@ export default{
       this.getResults("tv/top_rated", "popularSeries", false);
     },
     getApiTopRated(){
-      this.getResults("movie/top_rated", "topRatedMovies", false);
+      this.getResults("movie/top_rated", "topRatedMovies", false, false);
+    },
     },
     getApiInfos(){
       axios.get(`https://api.themoviedb.org/3/${store.type}/${store.idInfos}?api_key=61bccd436e95e107643dd33da21f2885&language=it-IT`)
