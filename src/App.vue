@@ -66,23 +66,25 @@ export default{
     },
 
     getApiInfos(){
+      store.modalIsLoading = true;
+      this.getApiCredits();
       axios.get(`https://api.themoviedb.org/3/${store.type}/${store.idInfos}?api_key=61bccd436e95e107643dd33da21f2885&language=it-IT`)
       .then(result => {
-        store.isLoading = true;
         store.resultDetails = [];
         store.resultDetails = result.data;
-        this.getApiCredits()
         console.log(store.resultDetails);
-        store.isLoading = false;
+        store.modalIsLoading = false;
       })
     },
+
     getApiCredits(){
+      store.modalIsLoading = true;
       axios.get(`https://api.themoviedb.org/3/${store.type}/${store.idInfos}/credits?api_key=61bccd436e95e107643dd33da21f2885&language=it-IT`)
       .then(result => {
         store.resultCredits = [];
         store.resultCredits = result.data;
         console.log(store.resultCredits);
-        store.isLoading = false;
+        store.modalIsLoading = false;
       })
     },
     
