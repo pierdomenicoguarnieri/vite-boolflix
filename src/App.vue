@@ -39,6 +39,28 @@ export default{
     getApiSerieList(){
       this.getResults("genre/tv/list", "serieGenre", false, true);
     },
+
+    getApiAllMovieGenres(relativePath){
+      store.results['movieGenre'].forEach(genre => {
+        let params = {
+            api_key: store.api_key,
+            sort_by: "release_date.desc",
+            language: store.language,
+            with_genres: ""
+          };
+          params.with_genres = genre.id;
+          axios.get(store.baseUrl + relativePath, {
+            params
+          })
+          .then(result => {
+            store.results[`movie${genre.name}`] = [];
+            store.results[`movie${genre.name}`] = result.data.results;
+            console.log("test", `movie${genre.name}`, store.results[`movie${genre.name}`]);
+          })
+        });
+        store.isLoading = false;
+    },
+
     getApiInfos(){
       axios.get(`https://api.themoviedb.org/3/${store.type}/${store.idInfos}?api_key=61bccd436e95e107643dd33da21f2885&language=it-IT`)
       .then(result => {
