@@ -71,15 +71,15 @@
     :mousewheel="true"
     :modules="modules"
     class="mySwiper">
-    <swiper-slide v-for="movie in array" :key="movie.id">
+    <swiper-slide v-for="card in array" :key="card.id">
       <Card
-        :image="movie.poster_path"
-        :originalTitle="movie.original_title"
-        :translatedTitle="movie.title"
-        :language="movie.original_language"
-        :rating="Math.ceil(movie.vote_average/2)"
-        :originalRating="(movie.vote_average/2)"
-        :id="movie.id"
+        :image="card.poster_path"
+        :originalTitle="card.original_title || card.original_name"
+        :translatedTitle="card.title || card.name"
+        :language="card.original_language"
+        :rating="Math.ceil(card.vote_average/2)"
+        :originalRating="(card.vote_average/2)"
+        :id="card.id"
         :isMovie="isMovie"
         @getApiInfos="getInfos"/>
       </swiper-slide>
