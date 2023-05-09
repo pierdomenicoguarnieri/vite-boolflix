@@ -136,6 +136,8 @@ export default{
     this.getApiPopular();
     this.getApiPopularSeries();
     this.getApiTopRated();
+    this.getApiMovieList();
+    this.getApiSerieList();
   }
 }
 </script>
