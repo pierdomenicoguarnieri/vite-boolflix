@@ -117,6 +117,17 @@ export default{
         }
       })
     },
+
+    resetApi(){
+      store.results = [];
+      store.search = false,
+      store.isLoading = true;
+      store.modalIsLoading = true;
+      this.getApiPopular();
+      this.getApiPopularSeries();
+      this.getApiTopRated();
+      this.getApiMovieList();
+      this.getApiSerieList();
     }
   },
   mounted(){
